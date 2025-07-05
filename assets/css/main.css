@@ -1655,14 +1655,14 @@ span {
 }
 .cta-items .cta-text p {
   color: var(--white);
-  font-size: 24px;
+  font-size: 15px;
   font-weight: 700;
   z-index: 9;
   position: relative;
 }
 @media (max-width: 575px) {
   .cta-items .cta-text p {
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 .cta-items .theme-btn {
@@ -1673,7 +1673,7 @@ span {
 .cta-items .cta-image {
   position: absolute;
   right: 25px;
-  top: 10px;
+  top: 1px;
 }
 @media (max-width: 1199px) {
   .cta-items .cta-image {
@@ -8100,7 +8100,7 @@ input.main-search-input::placeholder {
 }
 
 .section-padding {
-  padding: 120px 0;
+  padding: 100px 0;
 }
 @media (max-width: 1199px) {
   .section-padding {
