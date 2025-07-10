@@ -309,30 +309,67 @@
                                     </h2>
                                 </div>
                                 <div class="comment-form-wrap">
-                                    <form action="#" id="contact-form" method="POST">
-                                        <div class="row g-4">
-                                            <div class="col-lg-6">
-                                                <div class="form-clt">
-                                                    <input type="text" name="name" id="name" placeholder="Your Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-clt">
-                                                    <input type="text" name="email" id="email4" placeholder="Your Email">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-clt">
-                                                    <textarea name="message" id="message" placeholder="Your Message"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <button type="submit" class="theme-btn">
-                                                    Submit Message
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <form action="https://script.google.com/macros/s/AKfycbxfBS8CsU4sdk_QN1khzLYnksuCAin_q6F0bMgfe9Ozl8p35n45ASXkemM0jMj-7eW8/exec" id="contact-form" method="POST">
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="form-clt">
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-clt">
+                <input type="email" name="email" id="email4" placeholder="Your Email" required>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-clt">
+                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <button type="submit" class="theme-btn">
+                Submit Message
+            </button>
+        </div>
+    </div>
+</form>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var formData = new FormData(this);
+    var button = this.querySelector('button[type="submit"]');
+    var originalText = button.textContent;
+    
+    // Show loading state
+    button.textContent = 'Submitting...';
+    button.disabled = true;
+    
+    fetch(this.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Thank you! Your message has been sent successfully.');
+            this.reset();
+        } else {
+            alert('Sorry, there was an error submitting your form. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Sorry, there was an error submitting your form. Please try again.');
+    })
+    .finally(() => {
+        // Reset button
+        button.textContent = originalText;
+        button.disabled = false;
+    });
+});
+</script>
                                 </div>
                             </div>
                         </div>
